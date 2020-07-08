@@ -1,5 +1,5 @@
 import express from "express";
-import { celebrate, joi, Joi } from "celebrate";
+import { celebrate, Joi } from "celebrate";
 
 import multer from "multer";
 import multerConfig from "./config/multer";

@@ -3,4 +3,5 @@ uploads/*
 !uploads/.gitkeep
 
 *.sqlite
-
+Procfile
+.env
