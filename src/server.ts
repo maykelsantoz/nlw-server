@@ -6,6 +6,7 @@ import routes from "./routes";
 import { errors } from "celebrate";
 
 const app = express();
+require("dotenv").config();
 
 app.use(cors());
 app.use(express.json());
@@ -15,6 +16,6 @@ app.use("/uploads", express.static(path.resolve(__dirname, "..", "uploads")));
 
 app.use(errors());
 
-app.listen(3333, () => {
+app.listen(`${process.env.PORT}`, () => {
   console.log("⚡ Server online!");
 });
