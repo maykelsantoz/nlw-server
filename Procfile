@@ -1,1 +1,1 @@
-web: knex --knexfile knexfile.ts migrate:latest && knex --knexfile knexfile.ts seed:run && npm run build
+web: npm run build
