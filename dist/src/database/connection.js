@@ -15,8 +15,8 @@ require("dotenv/config");
 // });
 var connection = knex_1.default({
     client: 'pg',
-    connection: {
-        host: 'localhost',
+    connection: process.env.DATABASE_URL || {
+        host: String(process.env.DB_HOST),
         port: Number(process.env.DB_PORT),
         user: process.env.DB_USER,
         password: process.env.DB_PASSWORD,

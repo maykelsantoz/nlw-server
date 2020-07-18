@@ -1,5 +1,5 @@
 import knex from 'knex';
-//import path from 'path';
+import path from 'path';
 import 'dotenv/config'
 
 // const connection = knex({
@@ -12,7 +12,7 @@ import 'dotenv/config'
 
 const connection = knex({
   client: 'pg',
-  connection: process.env.DATABASE_URL
+  connection: process.env.DATABASE_URL,
 })
 
 export default connection;

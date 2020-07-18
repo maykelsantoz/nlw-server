@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "description": "Ecoleta",
   "main": "index.js",
+  "engines": {
+    "node": "12.18.0"
+  },
   "scripts": {
     "dev": "ts-node-dev --transpileOnly --ignore-watch node_modules src/server.ts",
     "knex:seed": "knex --knexfile knexfile.ts seed:run",
     "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node dist/src/server.js",
+    "heroku-postbuild": "npm run build"
   },
   "keywords": [],
   "author": "",
