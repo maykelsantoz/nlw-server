@@ -14,7 +14,7 @@
     "build": "npm run clean && tsc",
     "start": "node dist/src/server.js",
     "heroku-postbuild": "npm run build",
-    //"postbuild": "shx cp -r uploads dist"
+    "postbuild": "shx cp -r uploads dist"
   },
   "keywords": [],
   "author": "",
