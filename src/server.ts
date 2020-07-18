@@ -12,7 +12,6 @@ const enforce = require('express-sslify');
 const app = express();
 
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
-//app.use(express.static(path.join(__dirname, 'dist')));
 
 app.use(cors());
 app.use(express.json());

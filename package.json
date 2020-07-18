@@ -1,7 +1,7 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "Ecoleta",
+  "description": "Projetct",
   "main": "index.js",
   "engines": {
     "node": "12.18.0"
