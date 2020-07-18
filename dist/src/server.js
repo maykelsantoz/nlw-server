@@ -13,7 +13,6 @@ require("dotenv/config");
 var enforce = require('express-sslify');
 var app = express_1.default();
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
-//app.use(express.static(path.join(__dirname, 'dist')));
 app.use(cors_1.default());
 app.use(express_1.default.json());
 app.use(routes_1.default);

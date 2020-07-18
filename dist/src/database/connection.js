@@ -4,7 +4,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var knex_1 = __importDefault(require("knex"));
-//import path from 'path';
 require("dotenv/config");
 // const connection = knex({
 //   client: 'sqlite3',
@@ -15,12 +14,6 @@ require("dotenv/config");
 // });
 var connection = knex_1.default({
     client: 'pg',
-    connection: process.env.DATABASE_URL || {
-        host: String(process.env.DB_HOST),
-        port: Number(process.env.DB_PORT),
-        user: process.env.DB_USER,
-        password: process.env.DB_PASSWORD,
-        database: process.env.DB_NAME
-    }
+    connection: process.env.DATABASE_URL,
 });
 exports.default = connection;

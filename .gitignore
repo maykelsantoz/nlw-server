@@ -1,6 +1,7 @@
 node_modules
 !uploads/.gitkeep
-!uploads/.svg
+!uploads/*.svg
+
 
 *.sqlite
 Procfile
