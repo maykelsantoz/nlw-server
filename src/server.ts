@@ -4,20 +4,19 @@ import path from "path";
 import routes from "./routes";
 
 import { errors } from "celebrate";
-//require("dotenv").config();
+require("dotenv").config();
 import 'dotenv/config'
 
 const enforce = require('express-sslify');
 
 const app = express();
 
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
-
-//options for cors midddleware
 const corsOptions = {
-  origin: "https://xenodochial-curie-593783.netlify.app/",
+  origin: "https://xenodochial-curie-593783.netlify.app/create-point",
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
+
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 app.use(cors(corsOptions));
 
