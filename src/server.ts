@@ -17,13 +17,19 @@ require("dotenv").config();
 const app = express();
 
 
-// const http_request;
-// http_request = new XMLHTTPRequest();
-// //http_request.onreadystatechange = function () { /* .. */ };
-// http_request.open("POST", "https://xenodochial-curie-593783.netlify.app");
-// http_request.withCredentials = true;
-// http_request.setRequestHeader("Content-Type", "application/json");
-//http_request.send({ 'request': "authentication token" });
+const http_request = new XMLHTTPRequest();
+http_request.onreadystatechange = function () { 
+  if (this.readyState === 4 && this.status === 200) {
+    console.log(http_request.responseText)
+    
+  } else {
+    console.log("error")
+  }
+ };
+http_request.open("POST", "https://cors-anywhere.herokuapp.com/https://xenodochial-curie-593783.netlify.app");
+http_request.withCredentials = true;
+http_request.setRequestHeader("Content-Type", "application/json");
+http_request.send({ 'request': "authentication token" });
 
 // const options:cors.CorsOptions = {
 //   allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
@@ -61,12 +67,14 @@ const corsOptions = {
   origin: 'https://xenodochial-curie-593783.netlify.app'
 }
 
-// app.use((request: Request, response: Response, next: NextFunction) => {
-//   res.header("Access-Control-Allow-Origin", "https://xenodochial-curie-593783.netlify.app");
-//   res.header("Access-Control-Allow-Methods", "GET,PUT,POST");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   next();
-// });
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://cors-anywhere.herokuapp.com/https://xenodochial-curie-593783.netlify.app");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+//https://cors-anywhere.herokuapp.com/
 
 // app.use(
 //   cors({

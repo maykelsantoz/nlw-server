@@ -1,5 +1,5 @@
 import express from "express";
-import cors from "cors";
+//import cors from "cors";
 import { celebrate, Joi } from "celebrate";
 
 import multer from "multer";
@@ -14,9 +14,9 @@ const upload = multer(multerConfig);
 const pointsController = new PointsController();
 const itemsController = new ItemsController();
 
-const corsOptions = {
-  origin: 'https://xenodochial-curie-593783.netlify.app'
-}
+// const corsOptions = {
+//   origin: 'https://xenodochial-curie-593783.netlify.app'
+// }
 
 routes.get("/items", itemsController.index);
 routes.get("/points", pointsController.index);
@@ -24,7 +24,6 @@ routes.get("/points/:id", pointsController.show);
 
 routes.post(
   "/points",
-  cors(corsOptions),
   upload.single("image"),
   celebrate(
     {
