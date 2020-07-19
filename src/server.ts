@@ -12,7 +12,7 @@ const enforce = require('express-sslify');
 const app = express();
 
 const corsOptions = {
-  origin: "https://xenodochial-curie-593783.netlify.app/",
+  origin: "https://xenodochial-curie-593783.netlify.app",
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
