@@ -15,15 +15,20 @@ const app = express();
 
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
-app.use(cors({ origin: "https://xenodochial-curie-593783.netlify.app"}), (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
+app.use(cors(), (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
   next();
 });
+
+// app.use(cors({ origin: "https://xenodochial-curie-593783.netlify.app"}), (req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Methods", "GET,PUT,POST");
+//   res.header(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requested-With, Content-Type, Accept"
+//   );
+//   next();
+// });
 
 //options for cors midddleware
 // const options:cors.CorsOptions = {
@@ -35,7 +40,7 @@ app.use(cors({ origin: "https://xenodochial-curie-593783.netlify.app"}), (req, r
 //   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 // };
 
-// app.use(cors(options));
+//app.use(cors());
 
 // app.use((request: Request, response: Response, next: NextFunction) => {
 //   res.header("Access-Control-Allow-Origin", "https://xenodochial-curie-593783.netlify.app");
