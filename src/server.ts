@@ -1,5 +1,4 @@
 import express from "express";
-//import { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import path from "path";
 import routes from "./routes";
@@ -11,7 +10,7 @@ const app = express();
 
 app.use(express.json());
 
-app.use((req, res, next) => {
+app.use(cors(), (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers", 
