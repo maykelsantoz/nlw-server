@@ -18,8 +18,8 @@ app.use(enforce.HTTPS({ trustProtoHeader: true }));
 const options:cors.CorsOptions = {
   allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
   credentials: true,
-  methods: "GET,HEAD,OPTIONS,PUT,PATCH,POST,DELETE",
-  origin: "https://xenodochial-curie-593783.netlify.app",
+  methods: "POST",
+  origin: "*",
   preflightContinue: false,
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
@@ -28,9 +28,14 @@ app.use(cors(options));
 
 
 app.use(express.json());
+
+// app.use((req, res, next) => {
+//   console.log("Acessou o Middleware!")
+// });
+
 app.use(routes);
 
-router.options("*", cors(options));
+app.options("*", cors(options));
 
 app.use("/uploads", express.static(path.resolve(__dirname, "..", "uploads")));
 
