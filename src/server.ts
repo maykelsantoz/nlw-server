@@ -6,9 +6,9 @@ import routes from "./routes";
 
 import { errors } from "celebrate";
 require("dotenv").config();
-import 'dotenv/config'
+//import 'dotenv/config'
 
-const enforce = require('express-sslify');
+//const enforce = require('express-sslify');
 
 //const xhr = new XMLHttpRequest();
 
@@ -16,20 +16,20 @@ const enforce = require('express-sslify');
 
 const app = express();
 
-const options:cors.CorsOptions = {
-  allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
-  credentials: true,
-  methods: "POST",
-  origin: "*",
-  preflightContinue: false,
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
+// const options:cors.CorsOptions = {
+//   allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
+//   credentials: true,
+//   methods: "POST",
+//   origin: "*",
+//   preflightContinue: false,
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// };
 
-app.use(cors(options));
+app.use(cors());
 
-app.options("*", cors(options));
+//app.options("*", cors(options));
 
-app.use(enforce.HTTPS({ trustProtoHeader: true }));
+//app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 // app.use(cors(), (req, res, next) => {
 //   res.header('Access-Control-Allow-Origin', '*');
