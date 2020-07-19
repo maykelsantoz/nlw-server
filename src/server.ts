@@ -15,27 +15,33 @@ const app = express();
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 //options for cors midddleware
-const options:cors.CorsOptions = {
-  allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
-  credentials: true,
-  methods: "POST",
-  origin: "*",
-  preflightContinue: false,
-  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
+// const options:cors.CorsOptions = {
+//   allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
+//   credentials: true,
+//   methods: "POST",
+//   origin: "*",
+//   preflightContinue: false,
+//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+// };
 
-app.use(cors(options));
+// app.use(cors(options));
 
 
 app.use(express.json());
 
-// app.use((req, res, next) => {
-//   console.log("Acessou o Middleware!")
-// });
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", 'GET,PUT,POST');
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  app.use(cors());
+  next();
+});
+
 
 app.use(routes);
 
-app.options("*", cors(options));
+//app.options("*", cors(options));
 
 app.use("/uploads", express.static(path.resolve(__dirname, "..", "uploads")));
 
