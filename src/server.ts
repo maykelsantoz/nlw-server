@@ -16,6 +16,15 @@ require("dotenv").config();
 
 const app = express();
 
+
+const http_request;
+http_request = new XMLHTTPRequest();
+//http_request.onreadystatechange = function () { /* .. */ };
+http_request.open("POST", "https://xenodochial-curie-593783.netlify.app");
+http_request.withCredentials = true;
+http_request.setRequestHeader("Content-Type", "application/json");
+//http_request.send({ 'request': "authentication token" });
+
 // const options:cors.CorsOptions = {
 //   allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
 //   credentials: true,
@@ -25,7 +34,7 @@ const app = express();
 //   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 // };
 
-app.use(cors());
+app.use(cors(http_request));
 
 //app.options("*", cors(options));
 
