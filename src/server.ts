@@ -8,8 +8,6 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(express.json());
-
 app.use(cors(), (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -23,6 +21,7 @@ app.use(cors(), (req, res, next) => {
   next();
 });
 
+app.use(express.json());
 app.use(routes);
 
 //app.options("*", cors(options));
