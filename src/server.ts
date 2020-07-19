@@ -15,8 +15,9 @@ const app = express();
 
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "https://xenodochial-curie-593783.netlify.app");
+app.use(cors({ origin: "https://xenodochial-curie-593783.netlify.app"}), (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
@@ -43,14 +44,14 @@ app.use((req, res, next) => {
 //   next();
 // });
 
-app.use(
-  cors({
-    origin: "https://xenodochial-curie-593783.netlify.app", // restrict calls to those this address
-    methods: "POST" // only allow GET requests
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://xenodochial-curie-593783.netlify.app", // restrict calls to those this address
+//     methods: "POST" // only allow GET requests
+//   })
+// );
 
-//app.use(cors());
+//app.use(cors({ origin: "https://xenodochial-curie-593783.netlify.app"}));
 
 app.use(express.json());
 
