@@ -10,15 +10,31 @@ import 'dotenv/config'
 
 const enforce = require('express-sslify');
 
+//const xhr = new XMLHttpRequest();
+
+//xhr.open('GET',url, true);
+
 const app = express();
 
+const options:cors.CorsOptions = {
+  allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
+  credentials: true,
+  methods: "POST",
+  origin: "*",
+  preflightContinue: false,
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
+
+app.use(cors(options));
+
+app.options("*", cors(options));
 
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
-app.use(cors(), (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+// app.use(cors(), (req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   next();
+// });
 
 // app.use(cors({ origin: "https://xenodochial-curie-593783.netlify.app"}), (req, res, next) => {
 //   res.header("Access-Control-Allow-Origin", "*");
@@ -30,17 +46,8 @@ app.use(cors(), (req, res, next) => {
 //   next();
 // });
 
-//options for cors midddleware
-// const options:cors.CorsOptions = {
-//   allowedHeaders: ["Origin", "X-Requested-With", "Content-Type", "Accept", "X-Access-Token"],
-//   credentials: true,
-//   methods: "POST",
-//   origin: "*",
-//   preflightContinue: false,
-//   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-// };
+// options for cors midddleware
 
-//app.use(cors());
 
 // app.use((request: Request, response: Response, next: NextFunction) => {
 //   res.header("Access-Control-Allow-Origin", "https://xenodochial-curie-593783.netlify.app");
