@@ -15,8 +15,8 @@ const app = express();
 
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://xenodochial-curie-593783.netlify.app");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
@@ -46,7 +46,7 @@ app.use(function(req, res, next) {
 app.use(
   cors({
     origin: "https://xenodochial-curie-593783.netlify.app", // restrict calls to those this address
-    methods: "GET,POST" // only allow GET requests
+    methods: "POST" // only allow GET requests
   })
 );
 
