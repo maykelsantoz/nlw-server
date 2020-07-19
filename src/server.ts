@@ -11,6 +11,7 @@ const enforce = require('express-sslify');
 
 const app = express();
 
+
 app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 //options for cors midddleware
@@ -25,10 +26,11 @@ const options:cors.CorsOptions = {
 
 app.use(cors(options));
 
-app.options('*', cors()) // include before other routes
 
 app.use(express.json());
 app.use(routes);
+
+router.options("*", cors(options));
 
 app.use("/uploads", express.static(path.resolve(__dirname, "..", "uploads")));
 
