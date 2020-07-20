@@ -39,7 +39,17 @@ import 'dotenv/config'
 //const connection = knex({})
 const config = require('../../knexfile.ts');
 
-const proc = process.env.NODE_ENV || 'development';
+//const proc = process.env.NODE_ENV || 'development';
+
+if (process.env.NODE_ENV === 'development') {
+  const connection = knex(config.development)
+  console.log("Em dev")
+} else {
+  const connection = knex(config.production)
+  console.log("Em prod")
+
+
+}
 
 
 
@@ -47,7 +57,7 @@ const proc = process.env.NODE_ENV || 'development';
 
 
 
-const connection = knex(config.production)
+
   
 
 //proc,
