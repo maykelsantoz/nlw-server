@@ -1,7 +1,7 @@
 import path from 'path'
 require('dotenv').config();
 
-const mysqlConfig = {
+module.exports = {
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL,
@@ -12,7 +12,7 @@ const mysqlConfig = {
     seeds: {
       directory: path.resolve(__dirname, 'src', 'database', 'seeds')
     }
-    //useNullAsDefault: true,
+    useNullAsDefault: true,
   },
 
   development: {
@@ -25,10 +25,6 @@ const mysqlConfig = {
     seeds: {
       directory: path.resolve(__dirname, 'src', 'database', 'seeds')
     }
-    //useNullAsDefault: true,
+    useNullAsDefault: true,
   },
-
-  
 }
-
-module.exports = mysqlConfig;

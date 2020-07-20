@@ -8,7 +8,7 @@ require('dotenv').config();
 
 const app = express();
 
-app.use(cors({credentials:true, origin: process.env.FRONTEND || 'http://localhost:3000'}));
+app.use(cors({credentials:true, origin: process.env.FRONTEND || 'http://localhost:3333'}));
 
 // app.use(cors(), (req, res, next) => {
 //   res.header('Access-Control-Allow-Origin', '*');
