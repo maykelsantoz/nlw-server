@@ -10,9 +10,6 @@ import 'dotenv/config'
 //   useNullAsDefault: true,
 // });
 
-//const env = process.env.DATABASE_DEV;
-
-//import {production, development}  from '../../knexfile.ts';
 import mysqlConfig from '../../knexfile';
 
 //console.log(`Dev ${process.env.NODE_ENV}`)
