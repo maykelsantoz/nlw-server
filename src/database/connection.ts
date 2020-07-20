@@ -12,7 +12,9 @@ import 'dotenv/config'
 
 const connection = knex({
   client: 'pg',
-  connection: process.env.DATABASE_URL,
+  connection: process.env.NODE_ENV || 'development',
+  ssl: true,
+  //useNullAsDefault: true,
 })
 
 export default connection;
