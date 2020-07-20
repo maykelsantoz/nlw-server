@@ -11,7 +11,7 @@
     "knex:seed": "knex --knexfile knexfile.ts seed:run",
     "knex:migrate": "knex --knexfile knexfile.ts migrate:latest",
     "clean": "rimraf dist",
-    "build": "npm run clean && tsc",
+    "build": "npm run clean && tsc && knex --knexfile dist/knexfile.js migrate:latest && knex --knexfile dist/knexfile.js seed:run",
     "start": "node dist/src/server.js",
     "heroku-postbuild": "npm run build",
     "postbuild": "shx cp -r uploads dist"
