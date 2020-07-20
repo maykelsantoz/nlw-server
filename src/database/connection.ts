@@ -37,15 +37,19 @@ import 'dotenv/config'
 //NODE_DEV=development
 
 //const connection = knex({})
+const config = require('../../knexfile.ts');
 
 const proc = process.env.NODE_ENV || 'development';
+
+
 
 //console.log(process.env.NODE_ENV)
 
 
 
-const connection = knex(
-proc,
-)
+const connection = knex(config.production)
+  
+
+//proc,
 
 export default connection;
