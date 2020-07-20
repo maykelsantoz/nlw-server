@@ -13,11 +13,11 @@ import 'dotenv/config'
 //const env = process.env.DATABASE_DEV;
 
 //import {production, development}  from '../../knexfile.ts';
-import mysqlConfig from '../../knexfile.ts';
+import mysqlConfig from '../../knexfile';
 
 console.log(`Dev ${process.env.NODE_ENV}`)
 
-var knexConfig = mysqlConfig[`${process.env.NODE_ENV}` || `${process.env.NODE_ENV}`];
+var knexConfig = mysqlConfig[process.env.NODE_ENV || 'development'];
 //var knexConfig = mysqlConfig['development' || 'production'];
 //console.log(`E a conexão é ${process.env.NODE_ENV}`)
 console.log(knexConfig)
