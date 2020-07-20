@@ -13,7 +13,7 @@ import 'dotenv/config'
 const connection = knex({
   client: 'pg',
   connection: process.env.NODE_ENV || 'development',
-  ssl: true,
+  //ssl: true,
   //useNullAsDefault: true,
 })
 
