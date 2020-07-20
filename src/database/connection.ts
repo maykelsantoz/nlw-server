@@ -12,6 +12,8 @@ const config =
 
 //const proc = process.env.NODE_ENV || 'development';
 
+//console.log(config);
+
 const connection = knex(config);
 
 export default connection;

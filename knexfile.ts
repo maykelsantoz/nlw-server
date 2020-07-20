@@ -15,10 +15,26 @@ module.exports = {
   },
 
   development: {
-    client: "pg",
-    connection: process.env.DATABASE_DEV,
+    client: "sqlite3",
+    connection: {
+      filename: "./src/database/database.sqlite",
+    },
     migrations: {
-      directory: path.resolve(__dirname, "src", "database", "migrations"),
+      directory: "./src/database/migrations",
+    },
+    seeds: {
+      directory: path.resolve(__dirname, "src", "database", "seeds"),
+    },
+    useNullAsDefault: true,
+  },
+
+  dev: {
+    client: "sqlite3",
+    connection: {
+      filename: "./src/database/db.sqlite",
+    },
+    migrations: {
+      directory: "./src/database/migrations",
     },
     seeds: {
       directory: path.resolve(__dirname, "src", "database", "seeds"),
