@@ -1,7 +1,7 @@
 import path from 'path'
 require('dotenv').config();
 
-module.exports = {
+const mysqlConfig = {
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL,
@@ -30,3 +30,5 @@ module.exports = {
 
   
 }
+
+module.exports = mysqlConfig;
