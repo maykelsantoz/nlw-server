@@ -8,7 +8,7 @@ require("dotenv").config();
 
 const app = express();
 
-fetch("http://nlw01-web.herokuapp.com/create-point", {
+fetch("https://nlw01-web.herokuapp.com", {
   headers: {
     accepts: "application/json",
   },
