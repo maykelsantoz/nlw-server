@@ -15,21 +15,22 @@ app.use(express.json());
 // };
 
 fetch(`${process.env.FRONTEND}`, {
-  method: 'POST',
-  mode: 'cors', // pode ser cors ou basic(default)
-  redirect: 'follow',
+  method: "POST",
+  mode: "cors", // pode ser cors ou basic(default)
+  redirect: "follow",
   headers: new Headers({
-    'Content-Type': 'text/plain'
+    "Content-Type": "application/json",
+  }),
+})
+  .then(function (response) {
+    console.log(response);
   })
-}).then(function(response) {
-  // tratar a response
-});
-
+  .catch(function (error) {
+    console.log("Request failed", error);
+  });
 
 app.use(cors());
 app.use(routes);
-
-= () = {}
 
 //app.options('*', cors(options));
 
