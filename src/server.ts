@@ -9,6 +9,10 @@ require("dotenv").config();
 const app = express();
 
 app.use(express.json());
+
+const enforce = require("express-sslify");
+
+app.use(enforce.HTTPS({ trustProtoHeader: true }));
 // var corsOptions = {
 //   origin: process.env.FRONTEND,
 //   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
