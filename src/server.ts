@@ -18,21 +18,6 @@ app.use(enforce.HTTPS({ trustProtoHeader: true }));
 //   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 // };
 
-fetch(`${process.env.FRONTEND}`, {
-  method: "POST",
-  mode: "cors", // pode ser cors ou basic(default)
-  redirect: "follow",
-  headers: new Headers({
-    "Content-Type": "application/json",
-  }),
-})
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log("Request failed", error);
-  });
-
 app.use(cors());
 app.use(routes);
 
