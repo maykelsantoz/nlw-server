@@ -9,7 +9,7 @@ require("dotenv").config();
 const app = express();
 
 var corsOptions = {
-  origin: "http://nlw01-web.herokuapp.com/create-point",
+  origin: "https://nlw01-web.herokuapp.com/create-point",
   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
