@@ -8,38 +8,6 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(function (req, res, next) {
-  var oneof = false;
-  if (req.headers.Origin) {
-    res.header("Access-Control-Allow-Origin", req.headers.Origin);
-    oneof = true;
-  }
-  if (req.headers["access-control-request-method"]) {
-    res.header(
-      "Access-Control-Allow-Methods",
-      req.headers["access-control-request-method"]
-    );
-    oneof = true;
-  }
-  if (req.headers["access-control-request-headers"]) {
-    res.header(
-      "Access-Control-Allow-Headers",
-      req.headers["access-control-request-headers"]
-    );
-    oneof = true;
-  }
-  if (oneof) {
-    res.header("Access-Control-Max-Age", String(60 * 60 * 24 * 365));
-  }
-
-  // intercept OPTIONS method
-  if (oneof && req.method == "OPTIONS") {
-    res.send(200);
-  } else {
-    next();
-  }
-});
-
 // app.use(cors(), (req, res, next) => {
 //   res.header('Access-Control-Allow-Origin', '*');
 //   res.header(
@@ -54,6 +22,7 @@ app.use(function (req, res, next) {
 // });
 
 app.use(express.json());
+app.use(cors());
 app.use(routes);
 
 //app.options('*', cors(options));
