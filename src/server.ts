@@ -8,21 +8,13 @@ require("dotenv").config();
 
 const app = express();
 
-// app.use(cors(), (req, res, next) => {
-//   res.header('Access-Control-Allow-Origin', '*');
-//   res.header(
-//     'Access-Control-Allow-Headers',
-//     'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-//     );
-//     if (req.method === 'OPTIONS') {
-//       res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-//       return res.status(200).json({});
-//     }
-//   next();
-// });
+var corsOptions = {
+  origin: "http://nlw01-web.herokuapp.com/create-point",
+  optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(routes);
 
 //app.options('*', cors(options));
