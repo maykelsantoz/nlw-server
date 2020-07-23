@@ -1,12 +1,12 @@
-import express from 'express';
-//import cors from 'cors';
-import { celebrate, Joi } from 'celebrate';
+import express from "express";
+import cors from "cors";
+import { celebrate, Joi } from "celebrate";
 
-import multer from 'multer';
-import multerConfig from './config/multer';
+import multer from "multer";
+import multerConfig from "./config/multer";
 
-import PointsController from './controllers/PointsController';
-import ItemsController from './controllers/ItemsController';
+import PointsController from "./controllers/PointsController";
+import ItemsController from "./controllers/ItemsController";
 
 const routes = express.Router();
 const upload = multer(multerConfig);
@@ -18,13 +18,14 @@ const itemsController = new ItemsController();
 //   origin: 'https://xenodochial-curie-593783.netlify.app'
 // }
 
-routes.get('/items', itemsController.index);
-routes.get('/points', pointsController.index);
-routes.get('/points/:id', pointsController.show);
+routes.get("/items", cors(), itemsController.index);
+routes.get("/points", cors(), pointsController.index);
+routes.get("/points/:id", cors(), pointsController.show);
 
 routes.post(
-  '/points',
-  upload.single('image'),
+  "/points",
+  cors(),
+  upload.single("image"),
   celebrate(
     {
       body: Joi.object().keys({
