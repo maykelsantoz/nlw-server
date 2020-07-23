@@ -8,28 +8,28 @@ require("dotenv").config();
 
 const app = express();
 
-fetch("https://nlw01-web.herokuapp.com", {
-  headers: {
-    accepts: "application/json",
-  },
-})
-  .then((res) => {
-    console.log(res);
-    return res.json();
-  })
-  .then((json) => console.log(json))
-  .catch((a) => {
-    console.log(a);
-  });
-
+app.use(express.json());
 // var corsOptions = {
 //   origin: process.env.FRONTEND,
 //   optionsSuccessStatus: 200, // some legacy browsers (IE11, various SmartTVs) choke on 204
 // };
 
-app.use(express.json());
+fetch(`${process.env.FRONTEND}`, {
+  method: 'POST',
+  mode: 'cors', // pode ser cors ou basic(default)
+  redirect: 'follow',
+  headers: new Headers({
+    'Content-Type': 'text/plain'
+  })
+}).then(function(response) {
+  // tratar a response
+});
+
+
 app.use(cors());
 app.use(routes);
+
+= () = {}
 
 //app.options('*', cors(options));
 
