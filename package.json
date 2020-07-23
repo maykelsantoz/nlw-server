@@ -16,6 +16,10 @@
     "heroku-postbuild": "npm run build",
     "postbuild": "shx cp -r uploads dist"
   },
+  "proxy": {
+    "/create-point": {
+      "target": "https://nlw01-server.herokuapp.com/"
+    },
   "keywords": [],
   "author": "",
   "license": "ISC",
